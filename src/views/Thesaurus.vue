@@ -3,7 +3,6 @@
     <aside>
       <div class="sidebar-wrapper">
         <div class="flex-center flex-start bottom-24">
-          <ToggleBtn />
           <h2 class="l-12">Number of letters: {{ wordLength }}</h2>
         </div>
         <InputRange
@@ -15,7 +14,6 @@
         />
 
         <div class="flex-center flex-start bottom-24 top-32">
-          <ToggleBtn />
           <h2 class="l-12">Contains letters</h2>
         </div>
         <InputText
@@ -42,7 +40,7 @@
 //==============================
 // Imports
 //==============================
-import { computed, onMounted, ref } from "@vue/runtime-core";
+import { computed, onMounted, reactive, ref } from "@vue/runtime-core";
 import InputRange from "../components/InputRange.vue";
 import InputText from "../components/InputText.vue";
 import ToggleBtn from "../components/ToggleBtn.vue";
@@ -65,6 +63,10 @@ const data = ref(undefined);
 const words = ref([]);
 const wordLength = ref(5);
 const containsLetters = ref("");
+const disable = reactive({
+  length: false,
+  contains: false
+})
 
 //==============================
 // Functions

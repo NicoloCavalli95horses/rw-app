@@ -198,8 +198,7 @@ svg {
   background: #555;
 }
 
-.key {
-  background-color: #666;
-  padding: 6px;
-  border-radius: 12px;
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
