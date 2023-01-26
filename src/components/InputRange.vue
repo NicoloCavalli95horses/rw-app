@@ -49,7 +49,7 @@ input {
     border-radius: 50%;
     background-color: #eee;
     &:hover {
-      background-color: cadetblue;
+      background-color: var(--blue);
       transition-duration: 500ms;
     }
   }

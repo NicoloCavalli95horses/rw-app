@@ -1,30 +1,41 @@
 <template>
   <div class="flex-center">
     <aside>
-      <div class="wrapper">
-        <h2 class="bottom-24">Configuration</h2>
+      <div class="sidebar-wrapper">
+        <div class="flex-center flex-start bottom-24">
+          <ToggleBtn />
+          <h2 class="l-12">Number of letters: {{ wordLength }}</h2>
+        </div>
         <InputRange
           :show="true"
-          :value="letters"
+          :value="wordLength"
           :min="2"
           :max="14"
-          @update="(v) => (letters = parseInt(v))"
+          @update="(v) => (wordLength = parseInt(v))"
         />
-        <p class="top-12">Number of letters: {{ letters }}</p>
 
-        <h3 class="top-24"> Tot. words: {{ filteredWords.length }} </h3>
+        <div class="flex-center flex-start bottom-24 top-32">
+          <ToggleBtn />
+          <h2 class="l-12">Contains letters</h2>
+        </div>
+        <InputText
+          placeholder="Type letters to be contained"
+          @update="(v) => (containsLetters = v)"
+        />
       </div>
     </aside>
 
     <section>
       <div class="list">
         <ul>
-          <li v-for="word in filteredWords" :key="word"> {{ word }} </li>
+          <li v-for="word in filteredWords" :key="word">{{ word }}</li>
         </ul>
-      </div> 
+      </div>
     </section>
-
   </div>
+  <h3 class="bottom-right-corner">
+    Total words found: {{ filteredWords.length }}
+  </h3>
 </template>
 
 <script setup>
@@ -33,27 +44,31 @@
 //==============================
 import { computed, onMounted, ref } from "@vue/runtime-core";
 import InputRange from "../components/InputRange.vue";
+import InputText from "../components/InputText.vue";
+import ToggleBtn from "../components/ToggleBtn.vue";
 
 //==============================
 // Computed
 //==============================
-const filteredWords = computed(() =>
-  words.value.filter((word) => word.length == letters.value)
-);
+const filteredWords = computed(() => {
+  return words.value.filter((word) => {
+    return (
+      word.length == wordLength.value && word.includes(containsLetters.value)
+    );
+  });
+});
 
 //==============================
 // Consts
 //==============================
 const data = ref(undefined);
 const words = ref([]);
-const letters = ref(5);
+const wordLength = ref(5);
+const containsLetters = ref("");
 
 //==============================
 // Functions
 //==============================
-function onUpdate(e) {
-  console.log(e);
-}
 
 //==============================
 // Life cycle
@@ -73,12 +88,12 @@ onMounted(() => {
 <style lang="scss" scoped>
 aside {
   box-sizing: border-box;
-  width: 30%;
+  width: 450px;
   height: 100vh;
   background-color: #666;
   display: flex;
   flex-direction: column;
-  .wrapper {
+  .sidebar-wrapper {
     margin: 22px;
   }
 }
