@@ -1,34 +1,68 @@
 <template>
-  <p draggable="true" @dragstart="e => drag(e)">Click and drag me 👉</p>
-  <div class="abs-center">
-    <DragNDrop
-      class="bottom-24"
-      size="250px"
-      placeholder="drop here"
-      /> 
+  <template v-if="syllables[0]">
+  <div class="cards-wrapper" :class="{'notouch' : isSolved }">
+    <div v-for="s in syllables[0].length" :key="s">
+      <DraggableCard :size="200" :content="syllables[0].at(s - 1)" />
+    </div>
+  </div>
+  </template>
+  <div class="drop-area">
+    <WordSplitter
+      :word="WORD"
+      :alternatives="4"
+      @syllablesCreated="(s) => onSyllablesCreated(s)"
+      @correctAnswer="onCorrectAnswer()"
+      />
   </div>
 </template>
 <script setup>
-
 //==============================
 // Imports
 //==============================
-import { computed, onMounted, reactive, ref } from "@vue/runtime-core";
-import DragNDrop from "../components/DragNDrop.vue";
+import { ref } from "@vue/reactivity";
+import DraggableCard from "../components/DraggableCard.vue";
+import WordSplitter from "../components/WordSplitter.vue";
 
 //==============================
-// Computed
+// Consts
 //==============================
+const WORD = 'ca-gno-li-no';
+const syllables = ref([]);
+const isSolved = ref( false );
 
 //==============================
-// Functions
+// Function
 //==============================
-function drag(e) {
-  e.dataTransfer.setData("text", 'Voilà 😎');
+function onSyllablesCreated( s ){
+  syllables.value.push( s );
 }
+
+function onCorrectAnswer(){
+  isSolved.value = true;
+}
+
 </script>
 <style lang="scss" scoped>
- p {
-  margin: 50px;
- }
+.cards-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.drop-area {
+  position: absolute;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  margin: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  box-sizing: border-box;
+}
 </style>

@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
 :root {
-  --blue: lightblue;
+  --blue: #606dbc;
+  --blue-secondary: #465298;
+  --green: #2ba22b;
+  --green-secondary: #268e26;
 }
 
 * {
@@ -13,8 +18,8 @@ body {
   background-color: #222;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li, a {
-  font-family: 'Segoe UI', sans-serif;
+h1, h2, h3, h4, h5, h6, p, ul, li, a, span {
+  font-family: 'Quicksand', monospace;
   color: white;
 }
 h1 {

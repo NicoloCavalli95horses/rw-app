@@ -35,14 +35,14 @@
   position: absolute;
   bottom: 22px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 }
 
 .abs-center-top {
   position: absolute;
   top: 22px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
 }
 
 
@@ -176,6 +176,10 @@ svg {
 
 .unvisible {
   visibility: hidden;
+}
+
+.notouch {
+  pointer-events: none;
 }
 
 /* width */
