@@ -3,8 +3,8 @@
   <div class="progress-bar">
     <ProgressBar 
       :value="points"
-      :total="10"
-      @completed="onComplete()"
+      :total="2"
+      @completed="show.modal = true"
     />
   </div>
   
@@ -35,17 +35,32 @@
 
   <!-- Tip -->
   <span class="abs-center-bottom disabled">Press <code>space</code> to skip</span>
+
+  <!-- Modal -->
+  <Transition name="fade">
+    <Modal v-if="show.modal" title="Nice job!">
+      <template #default>
+        <p>You completed all the exercises! Well done!</p>
+      </template>
+      <template #footer>
+        <Btn text="continue" @click="onBtnClick()" /> 
+      </template>
+    </Modal>
+  </Transition>
+
 </template>
 <script setup>
 //==============================
 // Imports
 //==============================
-import { ref } from "@vue/reactivity";
+import { reactive, ref } from "@vue/reactivity";
 import { onMounted, onUnmounted } from "@vue/runtime-core";
 import { randomInterval, splitSyllables } from "../utils.js";
 import DraggableCard from "../components/DraggableCard.vue";
 import WordSplitter from "../components/WordSplitter.vue";
 import ProgressBar from "../components/ProgressBar.vue";
+import Modal from "../components/Modal.vue";
+import Btn from "../components/Btn.vue";
 
 //==============================
 // Consts
@@ -57,6 +72,9 @@ const isSolved = ref( false );
 const data = ref(undefined);
 const words = ref([]);
 const points = ref(0);
+const show = reactive({
+  modal: false
+})
 
 //==============================
 // Function
@@ -77,8 +95,9 @@ function onCorrectAnswer(){
   points.value++;
 }
 
-function onComplete(){
-  console.log('exercize complete');
+function onBtnClick(){
+  points.value = 0;
+  show.modal = false;
 }
 
 //==============================
@@ -134,5 +153,13 @@ onUnmounted(() => {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 44px);
+}
+
+// Transitions
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>
