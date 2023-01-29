@@ -31,7 +31,7 @@
       </div>
     </section>
   </div>
-  <h3 class="bottom-right-corner">
+  <h3 class="top-right-corner">
     Total words found: {{ filteredWords.length }}
   </h3>
 </template>
@@ -71,6 +71,8 @@ const disable = reactive({
 //==============================
 // Functions
 //==============================
+
+
 
 //==============================
 // Life cycle

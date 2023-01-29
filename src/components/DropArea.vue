@@ -1,8 +1,8 @@
 <template>
   <div
     class="area"
-    :class="{ 'valid' : isValid }"
-    :style="{ width: size, height: size }"
+    :class="{ 'error' : onError }"
+    :style="{ 'width': size, 'height': size }"
     @dragover="(e) => e.preventDefault()"
     @drop="(e) => drop(e)"
   >
@@ -31,12 +31,21 @@ const emits = defineEmits(['correctAnswer']);
 // Consts
 //==============================
 const content = ref('');
+const showAnimation = ref( true );
 
 //==============================
 // Computed
 //==============================
 const isValid = computed(() => content.value == props.solution );
-
+const onError = computed(() => {
+  if ( content.value && !isValid.value && showAnimation.value ) {
+    setTimeout(() => showAnimation.value = false, 1000)
+    return true
+  } else {
+    showAnimation.value = true;
+    return false
+  }
+})
 //==============================
 // Functions
 //==============================
@@ -50,9 +59,10 @@ function drop(ev) {
 //==============================
 watch( isValid, () => {
   if ( isValid ){
-    emits('correctAnswer', content.value)
+    emits('correctAnswer', content.value);
   }
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -71,20 +81,35 @@ watch( isValid, () => {
     var(--blue-secondary) 10px,
     var(--blue-secondary) 20px,
 );
-  &.valid {
+  &.error {
+    transition-duration: 500ms;
     background: repeating-linear-gradient(
     45deg,
-    var(--green),
-    var(--green) 10px,
-    var(--green-secondary) 10px,
-    var(--green-secondary) 20px,
-);
+    var(--red),
+    var(--red) 10px,
+    var(--red-secondary) 10px,
+    var(--red-secondary) 20px,
+    );
+    animation: shake 400ms linear;
   }
   .content {
     font-size: 92px;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-    }
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 </style>

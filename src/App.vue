@@ -1,5 +1,5 @@
 <template>
-  <div class="top-right-corner">
+  <div class="bottom-right-corner">
     <RouterLink to="/">Home | </RouterLink>
     <RouterLink to="/thesaurus">Thesaurus</RouterLink>
   </div>

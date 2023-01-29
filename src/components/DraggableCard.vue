@@ -5,7 +5,7 @@
    draggable="true"
    @dragstart="e => drag(e)"
   >
-    <span class="content">{{ content }}</span>
+    <span class="content">{{ syllable }}</span>
   </div>
 </template>
 
@@ -14,7 +14,7 @@
 // Imports
 //==============================
 import { reactive, ref } from "@vue/reactivity";
-import { onMounted, onUnmounted } from "@vue/runtime-core";
+import { onMounted, onUnmounted, watch } from "@vue/runtime-core";
 
 //==============================
 // Props and emits
@@ -24,10 +24,10 @@ const props = defineProps({
   content: String
 });
 
-const emit = defineEmits(["update"]);
 //==============================
 // Consts
 //==============================
+const syllable = ref( props.content );
 
 //==============================
 // Functions
@@ -36,9 +36,13 @@ function drag( e ) {
   e.dataTransfer.setData("text", props.content);
 }
 
-//==============================
-// Life cycle
-//==============================
+// ==============================
+// Watch
+// ==============================
+watch(() => props.content, (c) => {
+  syllable.value = c;
+});
+
 </script>
 
 <style lang="scss" scoped>
