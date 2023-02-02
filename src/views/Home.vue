@@ -3,7 +3,7 @@
   <div class="progress-bar">
     <ProgressBar 
       :value="points"
-      :total="2"
+      :total="15"
       @completed="show.modal = true"
     />
   </div>
@@ -26,7 +26,7 @@
   <div class="cards-wrapper">
     <div v-for="s in syllables.length" :key="s">
       <DraggableCard
-       :size="200"
+       :size="150"
        :content="syllables.at(s - 1)"
       />
     </div>
