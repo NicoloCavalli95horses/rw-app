@@ -2,7 +2,6 @@
   <div
     class="area"
     :class="{ 'error' : onError }"
-    :style="{ 'width': size, 'height': size }"
     @dragover="(e) => e.preventDefault()"
     @drop="(e) => drop(e)"
   >
@@ -73,6 +72,8 @@ watch( isValid, () => {
   justify-content: center;
   text-transform: uppercase;
   letter-spacing: 3px;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
   background: repeating-linear-gradient(
     45deg,

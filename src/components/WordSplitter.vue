@@ -1,15 +1,17 @@
 <template>
-  <div class="syllabe-box" v-for="s in syllables" :key="s">
-    <template v-if="s != solution">
-      <span>{{ s }}</span>
-    </template>
-    <template v-else>
-      <DropArea
-        size="250px"
-        :solution="solution"
-        @correctAnswer="emits('correctAnswer')"
-      />
-    </template>
+  <div class="syllabe-box">
+    <div v-for="s in syllables" :key="s">
+      <template v-if="s != solution">
+        <p>{{ s }}</p>
+      </template>
+      <template v-else>
+        <DropArea
+          class="drop-area"
+          :solution="solution"
+          @correctAnswer="emits('correctAnswer')"
+        />
+      </template>
+    </div>
   </div>
 </template>
 
@@ -95,16 +97,19 @@ watch(() => props.word, (w) => {
 
 <style lang="scss" scoped>
 .syllabe-box {
-  width: 200px;
-  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  span {
-    font-size: 92px;
+  gap: clamp(0px, 3vw, 66px);
+  p {
+    font-size: clamp(2rem, 10vw, 6rem);
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+  }
+  .drop-area {
+    width: clamp(100px, 10vw, 160px);
+    height: clamp(100px, 10vw, 160px);
   }
 }
 </style>

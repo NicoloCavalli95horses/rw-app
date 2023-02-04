@@ -8,13 +8,12 @@
     />
   </div>
   
-  
   <!-- Drop area -->
   <template v-if="splittedWord.at(0)">
     <div class="drop-area">
       <WordSplitter
         :word="splittedWord"
-        :alternatives="4"
+        :alternatives="ALTERNATIVES"
         @syllablesCreated="(s) => syllables = s"
         @correctAnswer="onCorrectAnswer()"
       />
@@ -25,10 +24,7 @@
   <template v-if="syllables.at(0)">
   <div class="cards-wrapper">
     <div v-for="s in syllables.length" :key="s">
-      <DraggableCard
-       :size="150"
-       :content="syllables.at(s - 1)"
-      />
+      <DraggableCard :content="syllables.at(s - 1)" />
     </div>
   </div>
   </template>
@@ -72,6 +68,7 @@ const isSolved = ref( false );
 const data = ref(undefined);
 const words = ref([]);
 const points = ref(0);
+const ALTERNATIVES = 4;
 const show = reactive({
   modal: false
 })
@@ -124,27 +121,25 @@ onUnmounted(() => {
 </script>
 <style lang="scss" scoped>
 .cards-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
+  box-sizing: border-box;
+  width: calc(100% - 44px); //consider margins
   position: absolute;
   bottom: 0px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 22px;
+  transform: translate(0%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 200px;
+  gap: 22px;
+  justify-content: center;
 }
 
 .drop-area {
   position: absolute;
-  transform: translate(-50%, 50%);
-  top: 44px;
-  left: 50%;
+  top: 200px;
   margin: 0 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  box-sizing: border-box;
+  width: calc(100% - 44px);
 }
 
 .progress-bar {

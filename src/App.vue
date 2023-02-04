@@ -1,8 +1,8 @@
 <template>
-  <div class="bottom-right-corner disabled">
-    <RouterLink to="/">Home | </RouterLink>
-    <RouterLink to="/thesaurus">Thesaurus</RouterLink>
-  </div>
+  <!-- <div class="bottom-right-corner disabled"> -->
+    <!-- <RouterLink to="/">Home | </RouterLink> -->
+    <!-- <RouterLink to="/thesaurus">Thesaurus</RouterLink> -->
+  <!-- </div> -->
   <RouterView />
 </template>
 

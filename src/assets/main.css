@@ -220,3 +220,7 @@ code {
 .fadein {
   transition-duration: 500ms;
 }
+
+.hide {
+  display: none;
+}
