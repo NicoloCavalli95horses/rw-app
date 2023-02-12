@@ -1,12 +1,9 @@
 <template>
-    <div>
-        <p>test</p>
-    </div>  
-    </template>
-    
-    <script setup>
-    </script>
-    
-    <style>
-    
-    </style>
+  <div>
+    <p>to do</p>
+  </div>
+</template>
+
+<script setup></script>
+
+<style></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1>Il mondo della lettura</h1>
+    <h1>Il regno delle parole</h1>
 
     <div class="btns-wrapper">
       <Btn text="login" :disabled="true"></Btn>

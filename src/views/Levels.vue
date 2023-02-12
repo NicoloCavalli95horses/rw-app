@@ -1,22 +1,22 @@
 <template>
   <div class="main">
     <!-- Title -->
-    <h1>Scegli la tua avventura</h1>
+    <h1>Scegli l'esercizio</h1>
 
     <!-- Levels -->
     <div class="levels-grid">
       <RouterLink to="/level-0">
         <Btn text="vocali" :card="true"></Btn>
       </RouterLink>  
-      <!-- <RouterLink to="/level-1"> -->
-        <Btn text="alfabeto" :card="true" :disabled="true"></Btn>
-      <!-- </RouterLink>   -->
-      <!-- <RouterLink to="/level-2"> -->
-        <Btn text="sillabe" :card="true" :disabled="true"></Btn>
-      <!-- </RouterLink>   -->
-      <!-- <RouterLink to="/level-3"> -->
-        <Btn text="sillabe invertite" :card="true" :disabled="true"></Btn>
-      <!-- </RouterLink>   -->
+      <RouterLink to="/level-1">
+        <Btn text="alfabeto" :card="true"></Btn>
+      </RouterLink>  
+      <RouterLink to="/level-2">
+        <Btn text="sillabe" :card="true"></Btn>
+      </RouterLink>  
+      <RouterLink to="/level-3">
+        <Btn text="sillabe invertite" :card="true"></Btn>
+      </RouterLink>  
       <!-- <RouterLink to="/level-4"> -->
         <Btn text="parole" :card="true" :disabled="true"></Btn>
       <!-- </RouterLink>  -->
