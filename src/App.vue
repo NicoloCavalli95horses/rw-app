@@ -1,14 +1,11 @@
 <template>
-  <!-- <div class="bottom-right-corner disabled"> -->
-    <!-- <RouterLink to="/">Home | </RouterLink> -->
-    <!-- <RouterLink to="/thesaurus">Thesaurus</RouterLink> -->
-  <!-- </div> -->
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </RouterView>
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
-
-<style scoped>
-</style>

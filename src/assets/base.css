@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Sofia&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
 :root {
@@ -7,6 +8,15 @@
   --green-secondary: #268e26;
   --red: #e42525;
   --red-secondary: #a21313;
+
+  --dark-grey: #222;
+  --grey: #444;
+  --light-grey: #888;
+
+  --radius-xl: 26px;
+  --radius-l: 18px;
+  --radius-m: 12px;
+  --radius-s: 6px;
 }
 
 * {
@@ -18,14 +28,20 @@ body {
   width: 100%;
   height: 100vh;
   background-color: #222;
+  overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, li, a, span {
+h2, h3, h4, h5, h6, p, ul, li, a, span {
   font-family: 'Quicksand', monospace;
-  color: white;
+  color: #222;
 }
 h1 {
-  font-size: 64px;
+  font-family: 'Sofia', sans-serif;
+  font-size: 84px;
+  color: #222;
+  padding: 12px 18px;
+  border-radius: var(--radius-xl);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 a {

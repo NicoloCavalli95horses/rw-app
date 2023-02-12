@@ -3,7 +3,7 @@
     <aside>
       <div class="sidebar-wrapper">
         <div class="flex-center flex-start bottom-24">
-          <h2 class="l-12">Number of letters: {{ wordLength }}</h2>
+          <h2 class="l-12">Numero massimo di lettere: {{ wordLength }}</h2>
         </div>
         <InputRange
           :show="true"
@@ -118,6 +118,7 @@ section {
     li {
       list-style: none;
       line-height: 22px;
+      color: white;
     }
   }
 }
