@@ -1,5 +1,5 @@
 <template>
-  <button :class="{ 'disabled': disabled, 'default': def, 'card' : card }">
+  <button :class="{ 'disabled': disabled, 'default': def, 'card' : card }" :style="{ 'width' : width }">
     <h3>{{ text }}</h3>
     <slot name="icon" />
   </button>
@@ -14,6 +14,7 @@ const props = defineProps({
   def: Boolean,
   card: Boolean,
   disabled: Boolean,
+  width: String
 });
 </script>
 

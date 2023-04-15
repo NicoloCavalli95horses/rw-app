@@ -2,8 +2,6 @@
   <div class="main">
     <DisplayLetters
       :set="VOWELS"
-      :audio="true"
-      :audio_speed="0.1"
       :uppercase="true"
     />
 

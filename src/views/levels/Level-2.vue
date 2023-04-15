@@ -2,8 +2,7 @@
   <div class="main">
     <DisplayLetters
       :set="SYLLABLES"
-      :audio="true"
-      :audio_speed="0.8"
+      :random="true"
       :uppercase="true"
     />
 

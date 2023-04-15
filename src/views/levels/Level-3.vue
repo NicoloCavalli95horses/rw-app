@@ -1,6 +1,10 @@
 <template>
   <div class="main">
-    <DisplayLetters :set="SYLLABLES" :audio_speed="0.8" :uppercase="true" />
+    <DisplayLetters
+      :set="SYLLABLES"
+      :random="true"
+      :uppercase="true"
+    />
 
     <!-- Back buttons -->
     <div class="top-left-corner">

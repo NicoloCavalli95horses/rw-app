@@ -6,23 +6,23 @@
     <!-- Levels -->
     <div class="levels-grid">
       <RouterLink to="/level-0">
-        <Btn text="vocali" :card="true"></Btn>
+        <Btn text="vocali" width="200px" :card="true"></Btn>
       </RouterLink>  
       <RouterLink to="/level-1">
-        <Btn text="alfabeto" :card="true"></Btn>
+        <Btn text="alfabeto" width="200px" :card="true"></Btn>
       </RouterLink>  
       <RouterLink to="/level-2">
-        <Btn text="sillabe" :card="true"></Btn>
+        <Btn text="sillabe" width="200px" :card="true"></Btn>
       </RouterLink>  
       <RouterLink to="/level-3">
-        <Btn text="sillabe invertite" :card="true"></Btn>
+        <Btn text="sillabe invertite" width="200px" :card="true"></Btn>
       </RouterLink>  
       <!-- <RouterLink to="/level-4"> -->
-        <Btn text="parole" :card="true" :disabled="true"></Btn>
+        <Btn text="parole" width="200px" :card="true" :disabled="true"></Btn>
       <!-- </RouterLink>  -->
       <!-- <RouterLink to="/level-5"> -->
-        <Btn text="parole da completare" :card="true" :disabled="true"></Btn>
-      <!-- </RouterLink>       -->
+        <Btn text="parole da completare" width="200px" :card="true" :disabled="true"></Btn>
+        <!-- </RouterLink>       -->
     </div>
 
     <!-- Back buttons -->
@@ -61,13 +61,11 @@ import Btn from "../components/Btn.vue";
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-
   display: flex;
   flex-direction: column;
 
   h1 {
-    margin: 22px;
-    width: max-content;
+    margin: 22px auto;
   }
   
   .levels-grid {
@@ -75,11 +73,14 @@ import Btn from "../components/Btn.vue";
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     display: grid;
+    width: 80%;
+    overflow-y: auto;
+    max-height: 60%;
+    margin-top: 22px;
     gap: 22px;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    place-items: center;
   }
 }
 </style>
